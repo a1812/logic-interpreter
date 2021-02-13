@@ -1,0 +1,27 @@
+{
+    "name": "a1812/logic-interpreter",
+    "description": "Logic operations",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roman Martinuk",
+            "email": "romanmartinuk@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Logic\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Logic\\Tests\\": "tests/"
+        }
+    }
+}
