@@ -9,7 +9,7 @@ class OrExp extends AbstractExp
 
     public function __construct(AbstractExp $first, AbstractExp $second)
     {
-        $this->first = $first;
+        $this->first  = $first;
         $this->second = $second;
     }
 
