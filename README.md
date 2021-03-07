@@ -29,9 +29,3 @@ $context->assign($c, false);
 
 var_dump($exp->interpret($context));
 ```
-
-## test
-
-``` bash
-$ php ./vendor/bin/phpunit --testdox
-```
