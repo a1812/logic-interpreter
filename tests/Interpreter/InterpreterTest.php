@@ -8,6 +8,7 @@ use Logic\Interpreter\EquivalentExp;
 use Logic\Interpreter\ImplicationExp;
 use Logic\Interpreter\NotExp;
 use Logic\Interpreter\OrExp;
+use Logic\Interpreter\PirsaExp;
 use Logic\Interpreter\ShefferExp;
 use Logic\Interpreter\VariableExp;
 use PHPUnit\Framework\TestCase;
@@ -110,7 +111,7 @@ class InterpreterTest extends TestCase
         $this->assertTrue($result, 'A ↔ B должен быть true');
     }
 
-    public function ShefferTest()
+    public function testSheffer()
     {
         $context = new Context();
 
@@ -128,7 +129,7 @@ class InterpreterTest extends TestCase
         $this->assertTrue($result, 'A | B должен быть true');
     }
 
-    public function PirsaTest()
+    public function testPirsa()
     {
         $context = new Context();
 
@@ -136,13 +137,13 @@ class InterpreterTest extends TestCase
         $b = new VariableExp('B');
 
         // A ↓ B
-        $exp = new ShefferExp($a, $b);
+        $exp = new PirsaExp($a, $b);
 
-        $context->assign($a, false);
-        $context->assign($b, false);
+        $context->assign($a, true);
+        $context->assign($b, true);
 
         $result = $exp->interpret($context);
 
-        $this->assertTrue($result, 'A ↓ B должен быть true');
+        $this->assertFalse($result, 'A ↓ B должен быть false');
     }
 }
