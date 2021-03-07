@@ -2,7 +2,7 @@
 
 namespace Logic\Interpreter;
 
-interface Binary
+interface BinaryInterface
 {
     public function getFirst(): AbstractExp;
 

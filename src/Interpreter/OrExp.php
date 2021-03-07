@@ -4,7 +4,7 @@ namespace Logic\Interpreter;
 
 use Logic\Interpreter\Visitor\AbstractVisitor;
 
-class OrExp extends AbstractExp implements Binary
+class OrExp extends AbstractExp implements BinaryInterface
 {
     private AbstractExp $first;
     private AbstractExp $second;
