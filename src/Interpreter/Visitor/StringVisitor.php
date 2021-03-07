@@ -3,11 +3,10 @@
 namespace Logic\Interpreter\Visitor;
 
 use Logic\Interpreter\AbstractExp;
-use Logic\Interpreter\VariableExp;
 
 class StringVisitor extends AbstractVisitor
 {
-    public function visitVariable(VariableExp $exp): string
+    public function visitVariable(AbstractExp $exp): string
     {
         return $exp->getName();
     }
