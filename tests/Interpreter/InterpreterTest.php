@@ -8,9 +8,10 @@ use Logic\Interpreter\EquivalentExp;
 use Logic\Interpreter\ImplicationExp;
 use Logic\Interpreter\NotExp;
 use Logic\Interpreter\OrExp;
-use Logic\Interpreter\PirsaExp;
+use Logic\Interpreter\PeirceExp;
 use Logic\Interpreter\ShefferExp;
 use Logic\Interpreter\VariableExp;
+use Logic\Interpreter\Visitor\StringVisitor;
 use PHPUnit\Framework\TestCase;
 
 class InterpreterTest extends TestCase
@@ -137,7 +138,7 @@ class InterpreterTest extends TestCase
         $b = new VariableExp('B');
 
         // A ↓ B
-        $exp = new PirsaExp($a, $b);
+        $exp = new PeirceExp($a, $b);
 
         $context->assign($a, true);
         $context->assign($b, true);

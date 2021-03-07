@@ -4,7 +4,7 @@ namespace Logic\Interpreter;
 
 use Logic\Interpreter\Visitor\AbstractVisitor;
 
-class OrExp extends AbstractExp implements Binary
+class PeirceExp extends AbstractExp
 {
     private AbstractExp $first;
     private AbstractExp $second;
@@ -27,11 +27,11 @@ class OrExp extends AbstractExp implements Binary
 
     function interpret(Context $context): bool
     {
-        return $this->first->interpret($context) || $this->second->interpret($context);
+        return !$this->first->interpret($context) && !$this->second->interpret($context);
     }
 
     function accept(AbstractVisitor $visitor)
     {
-        return $visitor->visitOr($this);
+        return $visitor->visitPeirce($this);
     }
 }

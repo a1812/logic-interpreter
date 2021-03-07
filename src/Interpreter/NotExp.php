@@ -2,6 +2,8 @@
 
 namespace Logic\Interpreter;
 
+use Logic\Interpreter\Visitor\AbstractVisitor;
+
 class NotExp extends AbstractExp
 {
     private AbstractExp $first;
@@ -11,8 +13,18 @@ class NotExp extends AbstractExp
         $this->first = $first;
     }
 
+    public function getFirst(): AbstractExp
+    {
+        return $this->first;
+    }
+
     function interpret(Context $context): bool
     {
         return !$this->first->interpret($context);
+    }
+
+    function accept(AbstractVisitor $visitor)
+    {
+        return $visitor->visitNot($this);
     }
 }
