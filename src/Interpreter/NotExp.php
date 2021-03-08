@@ -4,7 +4,7 @@ namespace Logic\Interpreter;
 
 use Logic\Interpreter\Visitor\AbstractVisitor;
 
-class NotExp extends AbstractExp
+class NotExp extends AbstractExp implements UnaryInterface
 {
     private AbstractExp $first;
 
