@@ -7,9 +7,14 @@ $ composer require a1812/logic-interpreter
 
 ## Usage
 ``` php
+namespace App;
+
 use Logic\Interpreter\Context;
 use Logic\Interpreter\OrExp;
 use Logic\Interpreter\VariableExp;
+use Logic\Interpreter\Visitor\StringVisitor;
+
+require 'vendor/autoload.php';
 
 $context = new Context();
 
@@ -27,7 +32,8 @@ $context->assign($a, false);
 $context->assign($b, true);
 $context->assign($c, false);
 
-var_dump($exp->interpret($context));
+// (A OR (B OR C)) = true
+echo $exp->accept(new StringVisitor()) . ' = ' . ($exp->interpret($context) ? 'true' : 'false') . PHP_EOL;
 ```
 
 ## test
