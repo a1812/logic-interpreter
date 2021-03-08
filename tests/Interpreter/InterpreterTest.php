@@ -12,6 +12,7 @@ use Logic\Interpreter\PeirceExp;
 use Logic\Interpreter\ShefferExp;
 use Logic\Interpreter\VariableExp;
 use Logic\Interpreter\Visitor\StringVisitor;
+use Logic\Interpreter\XorExp;
 use PHPUnit\Framework\TestCase;
 
 class InterpreterTest extends TestCase
@@ -75,6 +76,23 @@ class InterpreterTest extends TestCase
         $result = $exp->interpret($context);
 
         $this->assertTrue($result, '~A должен быть true');
+    }
+
+    public function testXor()
+    {
+        $context = new Context();
+
+        $a = new VariableExp('A');
+        $b = new VariableExp('B');
+
+        // A ⊻ B
+        $exp = new XorExp($a, $b);
+
+        $context->assign($a, true);
+        $context->assign($b, true);
+        $result = $exp->interpret($context);
+
+        $this->assertFalse($result, 'A ⊻ B должен быть false');
     }
 
     public function testImplication()
