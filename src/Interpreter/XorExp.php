@@ -11,7 +11,7 @@ class XorExp extends AbstractExp implements BinaryInterface
 
     public function __construct(AbstractExp $first, AbstractExp $second)
     {
-        $this->first = $first;
+        $this->first  = $first;
         $this->second = $second;
     }
 
@@ -32,6 +32,6 @@ class XorExp extends AbstractExp implements BinaryInterface
 
     function accept(AbstractVisitor $visitor)
     {
-        return $visitor->visitOr($this);
+        return $visitor->visitXor($this);
     }
 }

@@ -11,6 +11,7 @@ use Logic\Interpreter\PeirceExp;
 use Logic\Interpreter\ShefferExp;
 use Logic\Interpreter\VariableExp;
 use Logic\Interpreter\Visitor\StringVisitor;
+use Logic\Interpreter\XorExp;
 use PHPUnit\Framework\TestCase;
 
 class StringVisitorTest extends TestCase
@@ -56,6 +57,17 @@ class StringVisitorTest extends TestCase
         $result = $exp->accept(new StringVisitor());
 
         $this->assertEquals('(NOT A)', $result, 'должно быть "(NOT A)"');
+    }
+
+    /**
+     * @dataProvider providerVariables
+     */
+    public function testXor($a, $b)
+    {
+        $exp    = new XorExp($a, $b);
+        $result = $exp->accept(new StringVisitor());
+
+        $this->assertEquals('(A XOR B)', $result, 'должно быть "(A XOR B)"');
     }
 
     /**

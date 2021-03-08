@@ -14,6 +14,8 @@ abstract class AbstractVisitor
 
     abstract public function visitNot(AbstractExp $exp);
 
+    abstract public function visitXor(AbstractExp $exp);
+
     abstract public function visitImplication(AbstractExp $exp);
 
     abstract public function visitEquivalence(AbstractExp $exp);
