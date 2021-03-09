@@ -1,17 +1,17 @@
 <?php
 
-namespace Logic\Tests\Interpreter;
+namespace A1812\Tests\LogicInterpreter;
 
-use Logic\Interpreter\AndExp;
-use Logic\Interpreter\EquivalentExp;
-use Logic\Interpreter\ImplicationExp;
-use Logic\Interpreter\NotExp;
-use Logic\Interpreter\OrExp;
-use Logic\Interpreter\PeirceExp;
-use Logic\Interpreter\ShefferExp;
-use Logic\Interpreter\VariableExp;
-use Logic\Interpreter\Visitor\StringVisitor;
-use Logic\Interpreter\XorExp;
+use A1812\LogicInterpreter\AndExp;
+use A1812\LogicInterpreter\EquivalentExp;
+use A1812\LogicInterpreter\ImplicationExp;
+use A1812\LogicInterpreter\NotExp;
+use A1812\LogicInterpreter\OrExp;
+use A1812\LogicInterpreter\PeirceExp;
+use A1812\LogicInterpreter\ShefferExp;
+use A1812\LogicInterpreter\VariableExp;
+use A1812\LogicInterpreter\Visitor\StringVisitor;
+use A1812\LogicInterpreter\XorExp;
 use PHPUnit\Framework\TestCase;
 
 class StringVisitorTest extends TestCase

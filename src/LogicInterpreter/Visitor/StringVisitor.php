@@ -1,8 +1,8 @@
 <?php
 
-namespace Logic\Interpreter\Visitor;
+namespace A1812\LogicInterpreter\Visitor;
 
-use Logic\Interpreter\AbstractExp;
+use A1812\LogicInterpreter\AbstractExp;
 
 class StringVisitor extends AbstractVisitor
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Logic\Interpreter;
+namespace A1812\LogicInterpreter;
 
-use Logic\Interpreter\Visitor\AbstractVisitor;
+use A1812\LogicInterpreter\Visitor\AbstractVisitor;
 
-class OrExp extends AbstractExp implements BinaryInterface
+class AndExp extends AbstractExp implements BinaryInterface
 {
     private AbstractExp $first;
     private AbstractExp $second;
@@ -27,11 +27,11 @@ class OrExp extends AbstractExp implements BinaryInterface
 
     function interpret(Context $context): bool
     {
-        return $this->first->interpret($context) || $this->second->interpret($context);
+        return (bool)$this->first->interpret($context) && $this->second->interpret($context);
     }
 
     function accept(AbstractVisitor $visitor)
     {
-        return $visitor->visitOr($this);
+        return $visitor->visitAnd($this);
     }
 }

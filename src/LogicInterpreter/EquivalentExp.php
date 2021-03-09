@@ -1,10 +1,10 @@
 <?php
 
-namespace Logic\Interpreter;
+namespace A1812\LogicInterpreter;
 
-use Logic\Interpreter\Visitor\AbstractVisitor;
+use A1812\LogicInterpreter\Visitor\AbstractVisitor;
 
-class PeirceExp extends AbstractExp
+class EquivalentExp extends AbstractExp implements BinaryInterface
 {
     private AbstractExp $first;
     private AbstractExp $second;
@@ -27,11 +27,11 @@ class PeirceExp extends AbstractExp
 
     function interpret(Context $context): bool
     {
-        return !$this->first->interpret($context) && !$this->second->interpret($context);
+        return $this->first->interpret($context) === $this->second->interpret($context);
     }
 
     function accept(AbstractVisitor $visitor)
     {
-        return $visitor->visitPeirce($this);
+        return $visitor->visitEquivalence($this);
     }
 }

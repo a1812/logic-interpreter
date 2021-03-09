@@ -16,12 +16,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Logic\\": "src/"
+            "A1812\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Logic\\Tests\\": "tests/"
+            "A1812\\Tests\\": "tests/"
         }
     }
 }

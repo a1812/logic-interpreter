@@ -1,6 +1,6 @@
 <?php
 
-namespace Logic\Interpreter;
+namespace A1812\LogicInterpreter;
 
 interface UnaryInterface
 {
