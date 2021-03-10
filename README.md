@@ -22,8 +22,6 @@ $context = new Context();
 
 $a = new VariableExp('A');
 $b = new VariableExp('B');
-$c = new VariableExp('C');
-
 
 /*
  * NOT((A → B) AND (B → A))
