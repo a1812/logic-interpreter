@@ -11,157 +11,129 @@ use A1812\LogicInterpreter\OrExp;
 use A1812\LogicInterpreter\PeirceExp;
 use A1812\LogicInterpreter\ShefferExp;
 use A1812\LogicInterpreter\VariableExp;
-use A1812\LogicInterpreter\Visitor\StringVisitor;
 use A1812\LogicInterpreter\XorExp;
 use PHPUnit\Framework\TestCase;
 
 class InterpreterTest extends TestCase
 {
+    static Context     $context;
+    static VariableExp $a;
+    static VariableExp $b;
+    static VariableExp $c;
+
+    public static function setUpBeforeClass(): void
+    {
+        self::$context = new Context();
+
+        self::$a = new VariableExp('A');
+        self::$b = new VariableExp('B');
+        self::$c = new VariableExp('C');
+    }
+
     public function testOr()
     {
-        $context = new Context();
-
-        $a = new VariableExp('A');
-        $b = new VariableExp('B');
-        $c = new VariableExp('C');
-
         // A ∨ (B ∨ C)
         $exp = new OrExp(
-            $a,
-            new OrExp($b, $c)
+            self::$a,
+            new OrExp(self::$b, self::$c)
         );
 
-        $context->assign($a, false);
-        $context->assign($b, true);
-        $context->assign($c, false);
+        self::$context->assign(self::$a, false);
+        self::$context->assign(self::$b, true);
+        self::$context->assign(self::$c, false);
 
-        $result = $exp->interpret($context);
+        $result = $exp->interpret(self::$context);
 
         $this->assertTrue($result, 'A ∨ (B ∨ C) должен быть true');
     }
 
     public function testAnd()
     {
-        $context = new Context();
-
-        $a = new VariableExp('A');
-        $b = new VariableExp('B');
-        $c = new VariableExp('C');
-
         // A ∧ (B ∧ C)
         $exp = new AndExp(
-            $a,
-            new AndExp($b, $c)
+            self::$a,
+            new AndExp(self::$b, self::$c)
         );
 
-        $context->assign($a, true);
-        $context->assign($b, true);
-        $context->assign($c, true);
+        self::$context->assign(self::$a, true);
+        self::$context->assign(self::$b, true);
+        self::$context->assign(self::$c, true);
 
-        $result = $exp->interpret($context);
+        $result = $exp->interpret(self::$context);
 
         $this->assertTrue($result, 'A ∨ (B ∨ C) должен быть true');
     }
 
     public function testNot()
     {
-        $context = new Context();
-
-        $a = new VariableExp('A');
-
         // ~A
-        $exp = new NotExp($a);
+        $exp = new NotExp(self::$a);
 
-        $context->assign($a, false);
-        $result = $exp->interpret($context);
+        self::$context->assign(self::$a, false);
+        $result = $exp->interpret(self::$context);
 
         $this->assertTrue($result, '~A должен быть true');
     }
 
     public function testXor()
     {
-        $context = new Context();
-
-        $a = new VariableExp('A');
-        $b = new VariableExp('B');
-
         // A ⊻ B
-        $exp = new XorExp($a, $b);
+        $exp = new XorExp(self::$a, self::$b);
 
-        $context->assign($a, true);
-        $context->assign($b, true);
-        $result = $exp->interpret($context);
+        self::$context->assign(self::$a, true);
+        self::$context->assign(self::$b, true);
+        $result = $exp->interpret(self::$context);
 
         $this->assertFalse($result, 'A ⊻ B должен быть false');
     }
 
     public function testImplication()
     {
-        $context = new Context();
-
-        $a = new VariableExp('A');
-        $b = new VariableExp('B');
-
         // A → B
-        $exp = new ImplicationExp($a, $b);
+        $exp = new ImplicationExp(self::$a, self::$b);
 
-        $context->assign($a, true);
-        $context->assign($b, false);
-        $result = $exp->interpret($context);
+        self::$context->assign(self::$a, true);
+        self::$context->assign(self::$b, false);
+        $result = $exp->interpret(self::$context);
 
         $this->assertFalse($result, 'A → B должен быть false');
     }
 
     public function testEquivalent()
     {
-        $context = new Context();
-
-        $a = new VariableExp('A');
-        $b = new VariableExp('B');
-
         // A ↔ B
-        $exp = new EquivalentExp($a, $b);
+        $exp = new EquivalentExp(self::$a, self::$b);
 
-        $context->assign($a, true);
-        $context->assign($b, true);
+        self::$context->assign(self::$a, true);
+        self::$context->assign(self::$b, true);
 
-        $result = $exp->interpret($context);
+        $result = $exp->interpret(self::$context);
 
         $this->assertTrue($result, 'A ↔ B должен быть true');
     }
 
     public function testSheffer()
     {
-        $context = new Context();
-
-        $a = new VariableExp('A');
-        $b = new VariableExp('B');
-
         // A | B
-        $exp = new ShefferExp($a, $b);
+        $exp = new ShefferExp(self::$a, self::$b);
 
-        $context->assign($a, false);
-        $context->assign($b, false);
+        self::$context->assign(self::$a, false);
+        self::$context->assign(self::$b, false);
 
-        $result = $exp->interpret($context);
+        $result = $exp->interpret(self::$context);
 
         $this->assertTrue($result, 'A | B должен быть true');
     }
 
     public function testPirsa()
     {
-        $context = new Context();
-
-        $a = new VariableExp('A');
-        $b = new VariableExp('B');
-
         // A ↓ B
-        $exp = new PeirceExp($a, $b);
+        $exp = new PeirceExp(self::$a, self::$b);
 
-        $context->assign($a, true);
-        $context->assign($b, true);
+        self::$context->assign(self::$a, true);
+        self::$context->assign(self::$b, true);
 
-        $result = $exp->interpret($context);
+        $result = $exp->interpret(self::$context);
 
         $this->assertFalse($result, 'A ↓ B должен быть false');
     }
