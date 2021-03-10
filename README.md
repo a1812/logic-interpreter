@@ -28,11 +28,11 @@ $b = new VariableExp('B');
  *
  * from https://logic-proof.io/186
  *
- * Case	A   B   ~ ((A → B) ∧ (A → B))
- * 1    T   T   F
- * 2    T   F   T
- * 3    F   T   F
- * 4    F   F   F
+ * Case A  B  ~ ((A → B) ∧ (B → A))
+ * 1    T  T  F
+ * 2    T  F  T
+ * 3    F  T  T
+ * 4    F  F  F 
  */
 
 $exp = new NotExp(
