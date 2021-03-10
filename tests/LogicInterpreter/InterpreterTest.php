@@ -125,7 +125,7 @@ class InterpreterTest extends TestCase
         $this->assertTrue($result, 'A | B должен быть true');
     }
 
-    public function testPirsa()
+    public function testPeirce()
     {
         // A ↓ B
         $exp = new PeirceExp(self::$a, self::$b);
