@@ -14,6 +14,7 @@ use A1812\LogicInterpreter\Context;
 use A1812\LogicInterpreter\ImplicationExp;
 use A1812\LogicInterpreter\NotExp;
 use A1812\LogicInterpreter\VariableExp;
+use A1812\LogicInterpreter\Visitor\SignVisitor;
 use A1812\LogicInterpreter\Visitor\StringVisitor;
 
 require 'vendor/autoload.php';
