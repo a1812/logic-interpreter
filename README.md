@@ -54,6 +54,9 @@ $context->assign($b, true);
 // output: (NOT ((A IMPLICATION B) AND (B IMPLICATION A))) - false
 echo $exp->accept(new StringVisitor()) . ' - ' . ($exp->interpret($context) ? 'true' : 'false') . PHP_EOL;
 
+// output: (~ ((A → B) ∧ (B → A)) - false
+echo $exp->accept(new SignVisitor()) . ' - ' . ($exp->interpret($context) ? 'true' : 'false') . PHP_EOL;
+
 ```
 
 ## test
