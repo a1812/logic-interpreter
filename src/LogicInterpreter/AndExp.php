@@ -6,13 +6,8 @@ use A1812\LogicInterpreter\Visitor\AbstractVisitor;
 
 class AndExp extends AbstractExp implements BinaryInterface
 {
-    private AbstractExp $first;
-    private AbstractExp $second;
-
-    public function __construct(AbstractExp $first, AbstractExp $second)
+    public function __construct(private AbstractExp $first, private AbstractExp $second)
     {
-        $this->first  = $first;
-        $this->second = $second;
     }
 
     public function getFirst(): AbstractExp
@@ -27,7 +22,7 @@ class AndExp extends AbstractExp implements BinaryInterface
 
     function interpret(Context $context): bool
     {
-        return (bool)$this->first->interpret($context) && $this->second->interpret($context);
+        return $this->first->interpret($context) && $this->second->interpret($context);
     }
 
     function accept(AbstractVisitor $visitor)

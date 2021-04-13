@@ -6,11 +6,8 @@ use A1812\LogicInterpreter\Visitor\AbstractVisitor;
 
 class VariableExp extends AbstractExp
 {
-    private string $name;
-
-    public function __construct(string $name)
+    public function __construct(private string $name)
     {
-        $this->name = $name;
     }
 
     public function interpret(Context $context): bool

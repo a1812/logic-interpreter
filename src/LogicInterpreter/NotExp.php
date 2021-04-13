@@ -6,11 +6,8 @@ use A1812\LogicInterpreter\Visitor\AbstractVisitor;
 
 class NotExp extends AbstractExp implements UnaryInterface
 {
-    private AbstractExp $first;
-
-    public function __construct(AbstractExp $first)
+    public function __construct(private AbstractExp $first)
     {
-        $this->first = $first;
     }
 
     public function getFirst(): AbstractExp
