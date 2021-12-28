@@ -27,7 +27,7 @@ $b = new VariableExp('B');
 /*
  * NOT((A → B) AND (B → A))
  *
- * from https://logic-proof.io/186
+ * from https://logic-proof.symfony.site/186
  *
  * Case A  B  ~ ((A → B) ∧ (B → A))
  * 1    T  T  F
