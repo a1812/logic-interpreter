@@ -20,7 +20,7 @@ class VariableExp extends AbstractExp
         return $this->name;
     }
 
-    function accept(AbstractVisitor $visitor)
+    public function accept(AbstractVisitor $visitor)
     {
         return $visitor->visitVariable($this);
     }

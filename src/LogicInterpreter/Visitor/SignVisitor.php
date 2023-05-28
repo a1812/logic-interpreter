@@ -13,41 +13,41 @@ class SignVisitor extends AbstractVisitor
 
     public function visitAnd(AbstractExp $exp): string
     {
-        return '(' . $exp->getFirst()->accept($this) . ' ∧ ' . $exp->getSecond()->accept($this) . ')';
+        return '('.$exp->getFirst()->accept($this).' ∧ '.$exp->getSecond()->accept($this).')';
     }
 
     public function visitOr(AbstractExp $exp): string
     {
-        return '(' . $exp->getFirst()->accept($this) . ' ∨ ' . $exp->getSecond()->accept($this) . ')';
+        return '('.$exp->getFirst()->accept($this).' ∨ '.$exp->getSecond()->accept($this).')';
     }
 
     public function visitNot(AbstractExp $exp): string
     {
-        return '(~ ' . $exp->getFirst()->accept($this) . ')';
+        return '(~ '.$exp->getFirst()->accept($this).')';
     }
 
     public function visitXor(AbstractExp $exp): string
     {
-        return '(' . $exp->getFirst()->accept($this) . ' ⊻ ' . $exp->getSecond()->accept($this) . ')';
+        return '('.$exp->getFirst()->accept($this).' ⊻ '.$exp->getSecond()->accept($this).')';
     }
 
     public function visitImplication(AbstractExp $exp): string
     {
-        return '(' . $exp->getFirst()->accept($this) . ' → ' . $exp->getSecond()->accept($this) . ')';
+        return '('.$exp->getFirst()->accept($this).' → '.$exp->getSecond()->accept($this).')';
     }
 
     public function visitEquivalence(AbstractExp $exp): string
     {
-        return '(' . $exp->getFirst()->accept($this) . ' ↔ ' . $exp->getSecond()->accept($this) . ')';
+        return '('.$exp->getFirst()->accept($this).' ↔ '.$exp->getSecond()->accept($this).')';
     }
 
     public function visitSheffer(AbstractExp $exp): string
     {
-        return '(' . $exp->getFirst()->accept($this) . ' | ' . $exp->getSecond()->accept($this) . ')';
+        return '('.$exp->getFirst()->accept($this).' | '.$exp->getSecond()->accept($this).')';
     }
 
     public function visitPeirce(AbstractExp $exp): string
     {
-        return '(' . $exp->getFirst()->accept($this) . ' ↓ ' . $exp->getSecond()->accept($this) . ')';
+        return '('.$exp->getFirst()->accept($this).' ↓ '.$exp->getSecond()->accept($this).')';
     }
 }

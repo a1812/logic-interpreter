@@ -15,12 +15,12 @@ class NotExp extends AbstractExp implements UnaryInterface
         return $this->first;
     }
 
-    function interpret(Context $context): bool
+    public function interpret(Context $context): bool
     {
         return !$this->first->interpret($context);
     }
 
-    function accept(AbstractVisitor $visitor)
+    public function accept(AbstractVisitor $visitor)
     {
         return $visitor->visitNot($this);
     }

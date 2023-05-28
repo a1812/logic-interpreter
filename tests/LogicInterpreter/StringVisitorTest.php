@@ -21,7 +21,7 @@ class StringVisitorTest extends TestCase
         return [
             [
                 new VariableExp('A'),
-                new VariableExp('B')
+                new VariableExp('B'),
             ],
         ];
     }
@@ -31,7 +31,7 @@ class StringVisitorTest extends TestCase
      */
     public function testOr($a, $b)
     {
-        $exp    = new OrExp($a, $b);
+        $exp = new OrExp($a, $b);
         $result = $exp->accept(new StringVisitor());
 
         $this->assertEquals('(A OR B)', $result, 'должно быть "(A OR B)"');
@@ -42,7 +42,7 @@ class StringVisitorTest extends TestCase
      */
     public function testAnd($a, $b)
     {
-        $exp    = new AndExp($a, $b);
+        $exp = new AndExp($a, $b);
         $result = $exp->accept(new StringVisitor());
 
         $this->assertEquals('(A AND B)', $result, 'должно быть "(A AND B)"');
@@ -53,7 +53,7 @@ class StringVisitorTest extends TestCase
      */
     public function testNot($a)
     {
-        $exp    = new NotExp($a);
+        $exp = new NotExp($a);
         $result = $exp->accept(new StringVisitor());
 
         $this->assertEquals('(NOT A)', $result, 'должно быть "(NOT A)"');
@@ -64,7 +64,7 @@ class StringVisitorTest extends TestCase
      */
     public function testXor($a, $b)
     {
-        $exp    = new XorExp($a, $b);
+        $exp = new XorExp($a, $b);
         $result = $exp->accept(new StringVisitor());
 
         $this->assertEquals('(A XOR B)', $result, 'должно быть "(A XOR B)"');
@@ -75,7 +75,7 @@ class StringVisitorTest extends TestCase
      */
     public function testImplication($a, $b)
     {
-        $exp    = new ImplicationExp($a, $b);
+        $exp = new ImplicationExp($a, $b);
         $result = $exp->accept(new StringVisitor());
 
         $this->assertEquals('(A IMPLICATION B)', $result, 'должно быть "(A IMPLICATION B)"');
@@ -86,7 +86,7 @@ class StringVisitorTest extends TestCase
      */
     public function testEquivalence($a, $b)
     {
-        $exp    = new EquivalentExp($a, $b);
+        $exp = new EquivalentExp($a, $b);
         $result = $exp->accept(new StringVisitor());
 
         $this->assertEquals('(A EQUIVALENCE B)', $result, 'должно быть "(A EQUIVALENCE B)"');
@@ -97,7 +97,7 @@ class StringVisitorTest extends TestCase
      */
     public function testSheffer($a, $b)
     {
-        $exp    = new ShefferExp($a, $b);
+        $exp = new ShefferExp($a, $b);
         $result = $exp->accept(new StringVisitor());
 
         $this->assertEquals('(A SHEFFER B)', $result, 'должно быть "(A SHEFFER B)"');
@@ -108,7 +108,7 @@ class StringVisitorTest extends TestCase
      */
     public function testPeirce($a, $b)
     {
-        $exp    = new PeirceExp($a, $b);
+        $exp = new PeirceExp($a, $b);
         $result = $exp->accept(new StringVisitor());
 
         $this->assertEquals('(A PEIRCE B)', $result, 'должно быть "(A PEIRCE B)"');
@@ -121,7 +121,8 @@ class StringVisitorTest extends TestCase
     {
         $exp = new AndExp(
             $a,
-            new OrExp($b,
+            new OrExp(
+                $b,
                 new NotExp($a)
             )
         );

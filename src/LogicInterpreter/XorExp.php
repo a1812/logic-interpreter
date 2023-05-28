@@ -20,12 +20,12 @@ class XorExp extends AbstractExp implements BinaryInterface
         return $this->second;
     }
 
-    function interpret(Context $context): bool
+    public function interpret(Context $context): bool
     {
         return $this->first->interpret($context) xor $this->second->interpret($context);
     }
 
-    function accept(AbstractVisitor $visitor)
+    public function accept(AbstractVisitor $visitor)
     {
         return $visitor->visitXor($this);
     }

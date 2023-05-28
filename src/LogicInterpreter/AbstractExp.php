@@ -6,7 +6,7 @@ use A1812\LogicInterpreter\Visitor\AbstractVisitor;
 
 abstract class AbstractExp
 {
-    abstract function interpret(Context $context): bool;
+    abstract public function interpret(Context $context): bool;
 
-    abstract function accept(AbstractVisitor $visitor);
+    abstract public function accept(AbstractVisitor $visitor);
 }

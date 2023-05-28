@@ -21,7 +21,7 @@ class SignVisitorTest extends TestCase
         return [
             [
                 new VariableExp('A'),
-                new VariableExp('B')
+                new VariableExp('B'),
             ],
         ];
     }
@@ -31,7 +31,7 @@ class SignVisitorTest extends TestCase
      */
     public function testOr($a, $b)
     {
-        $exp    = new OrExp($a, $b);
+        $exp = new OrExp($a, $b);
         $result = $exp->accept(new SignVisitor());
 
         $this->assertEquals('(A ∨ B)', $result, 'должно быть "(A ∨ B)"');
@@ -42,7 +42,7 @@ class SignVisitorTest extends TestCase
      */
     public function testAnd($a, $b)
     {
-        $exp    = new AndExp($a, $b);
+        $exp = new AndExp($a, $b);
         $result = $exp->accept(new SignVisitor());
 
         $this->assertEquals('(A ∧ B)', $result, 'должно быть "(A ∧ B)"');
@@ -53,7 +53,7 @@ class SignVisitorTest extends TestCase
      */
     public function testNot($a)
     {
-        $exp    = new NotExp($a);
+        $exp = new NotExp($a);
         $result = $exp->accept(new SignVisitor());
 
         $this->assertEquals('(~ A)', $result, 'должно быть "(~ A)"');
@@ -64,7 +64,7 @@ class SignVisitorTest extends TestCase
      */
     public function testXor($a, $b)
     {
-        $exp    = new XorExp($a, $b);
+        $exp = new XorExp($a, $b);
         $result = $exp->accept(new SignVisitor());
 
         $this->assertEquals('(A ⊻ B)', $result, 'должно быть "(A ⊻ B)"');
@@ -75,7 +75,7 @@ class SignVisitorTest extends TestCase
      */
     public function testImplication($a, $b)
     {
-        $exp    = new ImplicationExp($a, $b);
+        $exp = new ImplicationExp($a, $b);
         $result = $exp->accept(new SignVisitor());
 
         $this->assertEquals('(A → B)', $result, 'должно быть "(A → B)"');
@@ -86,7 +86,7 @@ class SignVisitorTest extends TestCase
      */
     public function testEquivalence($a, $b)
     {
-        $exp    = new EquivalentExp($a, $b);
+        $exp = new EquivalentExp($a, $b);
         $result = $exp->accept(new SignVisitor());
 
         $this->assertEquals('(A ↔ B)', $result, 'должно быть "(A ↔ B)"');
@@ -97,7 +97,7 @@ class SignVisitorTest extends TestCase
      */
     public function testSheffer($a, $b)
     {
-        $exp    = new ShefferExp($a, $b);
+        $exp = new ShefferExp($a, $b);
         $result = $exp->accept(new SignVisitor());
 
         $this->assertEquals('(A | B)', $result, 'должно быть "(A | B)"');
@@ -108,7 +108,7 @@ class SignVisitorTest extends TestCase
      */
     public function testPeirce($a, $b)
     {
-        $exp    = new PeirceExp($a, $b);
+        $exp = new PeirceExp($a, $b);
         $result = $exp->accept(new SignVisitor());
 
         $this->assertEquals('(A ↓ B)', $result, 'должно быть "(A ↓ B)"');

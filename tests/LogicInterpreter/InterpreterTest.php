@@ -16,10 +16,10 @@ use PHPUnit\Framework\TestCase;
 
 class InterpreterTest extends TestCase
 {
-    static Context     $context;
-    static VariableExp $a;
-    static VariableExp $b;
-    static VariableExp $c;
+    public static Context $context;
+    public static VariableExp $a;
+    public static VariableExp $b;
+    public static VariableExp $c;
 
     public static function setUpBeforeClass(): void
     {
