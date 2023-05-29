@@ -38,9 +38,11 @@ class InterpreterTest extends TestCase
             new OrExp(self::$b, self::$c)
         );
 
-        self::$context->assign(self::$a, false);
-        self::$context->assign(self::$b, true);
-        self::$context->assign(self::$c, false);
+        self::$context
+            ->assign(self::$a, false)
+            ->assign(self::$b, true)
+            ->assign(self::$c, false)
+        ;
 
         $result = $exp->interpret(self::$context);
 
@@ -55,9 +57,11 @@ class InterpreterTest extends TestCase
             new AndExp(self::$b, self::$c)
         );
 
-        self::$context->assign(self::$a, true);
-        self::$context->assign(self::$b, true);
-        self::$context->assign(self::$c, true);
+        self::$context
+            ->assign(self::$a, true)
+            ->assign(self::$b, true)
+            ->assign(self::$c, true)
+        ;
 
         $result = $exp->interpret(self::$context);
 
@@ -80,8 +84,11 @@ class InterpreterTest extends TestCase
         // A ⊻ B
         $exp = new XorExp(self::$a, self::$b);
 
-        self::$context->assign(self::$a, true);
-        self::$context->assign(self::$b, true);
+        self::$context
+            ->assign(self::$a, true)
+            ->assign(self::$b, true)
+        ;
+
         $result = $exp->interpret(self::$context);
 
         $this->assertFalse($result, 'A ⊻ B должен быть false');
@@ -92,8 +99,11 @@ class InterpreterTest extends TestCase
         // A → B
         $exp = new ImplicationExp(self::$a, self::$b);
 
-        self::$context->assign(self::$a, true);
-        self::$context->assign(self::$b, false);
+        self::$context
+            ->assign(self::$a, true)
+            ->assign(self::$b, false)
+        ;
+
         $result = $exp->interpret(self::$context);
 
         $this->assertFalse($result, 'A → B должен быть false');
@@ -104,8 +114,10 @@ class InterpreterTest extends TestCase
         // A ↔ B
         $exp = new EquivalentExp(self::$a, self::$b);
 
-        self::$context->assign(self::$a, true);
-        self::$context->assign(self::$b, true);
+        self::$context
+            ->assign(self::$a, true)
+            ->assign(self::$b, true)
+        ;
 
         $result = $exp->interpret(self::$context);
 
@@ -117,8 +129,10 @@ class InterpreterTest extends TestCase
         // A | B
         $exp = new ShefferExp(self::$a, self::$b);
 
-        self::$context->assign(self::$a, false);
-        self::$context->assign(self::$b, false);
+        self::$context
+            ->assign(self::$a, false)
+            ->assign(self::$b, false)
+        ;
 
         $result = $exp->interpret(self::$context);
 
@@ -130,8 +144,10 @@ class InterpreterTest extends TestCase
         // A ↓ B
         $exp = new PeirceExp(self::$a, self::$b);
 
-        self::$context->assign(self::$a, true);
-        self::$context->assign(self::$b, true);
+        self::$context
+            ->assign(self::$a, true)
+            ->assign(self::$b, true)
+        ;
 
         $result = $exp->interpret(self::$context);
 

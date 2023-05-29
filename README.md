@@ -43,20 +43,30 @@ $exp = new NotExp(
     )
 );
 
-$context->assign($a, true);
-$context->assign($b, false);
+$context
+    ->assign($a, true)
+    ->assign($b, false)
+;
 
-// output: (NOT ((A IMPLICATION B) AND (B IMPLICATION A))) - true
-echo $exp->accept(new StringVisitor()) . ' - ' . ($exp->interpret($context) ? 'true' : 'false') . PHP_EOL;
+// output: "(NOT ((A IMPLICATION B) AND (B IMPLICATION A)))"
+echo $exp->accept(new StringVisitor());
 
-$context->assign($a, true);
-$context->assign($b, true);
+// output: " = true" 
+echo ' = ' . $exp->interpret($context) ? 'true' : 'false' . PHP_EOL;
 
-// output: (NOT ((A IMPLICATION B) AND (B IMPLICATION A))) - false
-echo $exp->accept(new StringVisitor()) . ' - ' . ($exp->interpret($context) ? 'true' : 'false') . PHP_EOL;
+$context
+    ->assign($a, true)
+    ->assign($b, true)
+;
+
+// output: "(NOT ((A IMPLICATION B) AND (B IMPLICATION A)))"
+echo $exp->accept(new StringVisitor());
+
+// output: " = false"
+echo ' = ' . $exp->interpret($context) ? 'true' : 'false' . PHP_EOL;
 
 // output: (~ ((A → B) ∧ (B → A)) - false
-echo $exp->accept(new SignVisitor()) . ' - ' . ($exp->interpret($context) ? 'true' : 'false') . PHP_EOL;
+echo $exp->accept(new SignVisitor()) . ' = ' . ($exp->interpret($context) ? 'true' : 'false') . PHP_EOL;
 
 ```
 
